@@ -78,5 +78,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@glimmer/runtime": "^0.92.0"
   }
 }
