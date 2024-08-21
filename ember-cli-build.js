@@ -13,6 +13,12 @@ module.exports = function (defaults) {
         cacheInclude: [/.*\.(css|js|hbs|html)$/, /.\/tailwind\.config\.js/],
       },
     },
+    fontawesome: {
+      icons: {
+        'free-solid-svg-icons': 'all',
+        'free-regular-svg-icons': 'all',
+      },
+    },
   });
 
   const { Webpack } = require('@embroider/webpack');
