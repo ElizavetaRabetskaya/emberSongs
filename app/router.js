@@ -16,10 +16,11 @@ export default class Router extends EmberRouter {
 // полный переход "сверху вниз"
 // запускается только при начальной загрузке приложения.
 Router.map(function () {
-  this.route('bands', function () {
-    this.route('band', { path: ':id' }, function () {
+  this.route('bands', { path: '/' }, function () {
+    this.route('band', { path: 'bands/:id' }, function () {
       this.route('songs');
+      this.route('details');
     });
-    this.route('new');
+    this.route('new', { path: 'bands/new' });
   });
 });
