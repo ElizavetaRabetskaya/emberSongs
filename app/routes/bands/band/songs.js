@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { service } from '@ember/service';
 export default class BandsBandSongsRoute extends Route {
   // model() {
   //   let band = this.modelFor('bands.band');
@@ -8,6 +9,13 @@ export default class BandsBandSongsRoute extends Route {
   //   super.setupController(...arguments);
   //   controller.set('band', this.modelFor('bands.band'));
   // }
+
+  @service catalog;
+  async model() {
+    let band = this.modelFor('bands.band');
+    await this.catalog.fetchRelated(band, 'songs');
+    return band;
+  }
 
   resetController(controller) {
     controller.title = '';
