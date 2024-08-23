@@ -7,7 +7,7 @@ import wait from 'rarwe/utils/wait';
 export default class BandsRoute extends Route {
   @service catalog;
   async model() {
-    await wait(2000);
+    await wait(500);
     return this.catalog.fetchAll('bands');
   }
 }
