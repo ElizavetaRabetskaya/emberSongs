@@ -48,6 +48,10 @@ module('Acceptance | songs', function (hooks) {
         'Elephants',
         'The last song is the one that comes first in the alphabet',
       );
+    assert.ok(
+      currentURL().includes('s=-title'),
+      'The sort query param appears in the URL with the correct value',
+    );
     await click('[data-test-rr=sort-by-rating-asc]');
     assert
       .dom('[data-test-rr=song-list-item]:first-child')
@@ -55,6 +59,10 @@ module('Acceptance | songs', function (hooks) {
     assert
       .dom('[data-test-rr=song-list-item]:last-child')
       .hasText('Spinning in Daffodils', 'The last song is the highest rated');
+    assert.ok(
+      currentURL().includes('s=rating'),
+      'The sort query param appears in the URL with the correct value',
+    );
     await click('[data-test-rr=sort-by-rating-desc]');
     assert
       .dom('[data-test-rr=song-list-item]:first-child')
@@ -62,5 +70,9 @@ module('Acceptance | songs', function (hooks) {
     assert
       .dom('[data-test-rr=song-list-item]:last-child')
       .hasText('Mind Eraser, No Chaser', 'The last song is the lowest rated');
+    assert.ok(
+      currentURL().includes('s=-rating'),
+      'The sort query param appears in the URL with the correct value',
+    );
   });
 });
