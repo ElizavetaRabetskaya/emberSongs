@@ -28,6 +28,7 @@ export default class BandsBandSongsRoute extends Route {
     await wait(500);
     await this.catalog.fetchRelated(band, 'songs');
     return band;
+    // return Promise.reject();
   }
 
   resetController(controller) {
