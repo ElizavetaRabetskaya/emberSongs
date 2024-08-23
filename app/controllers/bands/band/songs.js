@@ -9,12 +9,20 @@ export default class BandsBandSongsController extends Controller {
   @tracked showAddSong = true;
   @tracked title = '';
   @tracked sortBy = 'title';
+  @tracked searchTerm = '';
 
   get hasNoTitle() {
     return !this.title;
   }
 
   @service catalog;
+
+  get matchingSongs() {
+    let searchTerm = this.searchTerm.toLowerCase();
+    return this.model.songs.filter((song) => {
+      return song.title.toLowerCase().includes(searchTerm);
+    });
+  }
 
   get sortedSongs() {
     let sortBy = this.sortBy;
@@ -24,7 +32,7 @@ export default class BandsBandSongsController extends Controller {
       isDescendingSort = true;
     }
 
-    return [...this.model.songs].sort((song1, song2) => {
+    return this.matchingSongs.sort((song1, song2) => {
       if (song1[sortBy] < song2[sortBy]) {
         return isDescendingSort ? 1 : -1;
       }
@@ -55,6 +63,11 @@ export default class BandsBandSongsController extends Controller {
     //   body: JSON.stringify(payload),
     // });
     this.catalog.update('song', song, { rating });
+  }
+
+  @action
+  updateSearchTerm(event) {
+    this.searchTerm = event.target.value;
   }
 
   @action
