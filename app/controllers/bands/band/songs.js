@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 // import { Song } from 'rarwe/routes/bands';
 // import Song from 'rarwe/models/song';
 import { service } from '@ember/service';
+import { capitalize } from 'rarwe/helpers/capitalize';
 
 export default class BandsBandSongsController extends Controller {
   @tracked showAddSong = true;
@@ -41,6 +42,11 @@ export default class BandsBandSongsController extends Controller {
       }
       return 0;
     });
+  }
+
+  get newSongPlaceholder() {
+    let bandName = this.model.name;
+    return `New ${capitalize([bandName])} song`;
   }
 
   @action
