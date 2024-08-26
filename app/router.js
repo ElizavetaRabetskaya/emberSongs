@@ -4,6 +4,25 @@ import config from 'rarwe/config/environment';
 export default class Router extends EmberRouter {
   location = config.locationType;
   rootURL = config.rootURL;
+
+  constructor() {
+    super(...arguments);
+
+    this.on('routeDidChange', () => {
+      const queryParams = new URLSearchParams(window.location.search);
+      const path = queryParams.get('path');
+
+      if (path) {
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname,
+        );
+
+        this.transitionTo(path.replace(config.rootURL, ''));
+      }
+    });
+  }
 }
 // Здесь :band_id является динамическим сегментом URL.
 // Это значит, что при переходе к такому URL,
