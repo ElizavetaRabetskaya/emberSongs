@@ -1,9 +1,0 @@
-<script type="text/javascript">
-  // Redirect any 404 to the index.html for handling by the Ember app
-  var pathname = window.location.pathname;
-  if (pathname.includes("/emberSongs/")) {
-    window.location.replace("/emberSongs/index.html?path=" + pathname);
-  } else {
-    window.location.replace("/index.html?path=" + pathname);
-  }
-</script>

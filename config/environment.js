@@ -44,6 +44,7 @@ module.exports = function (environment) {
     // here you can enable a production-specific feature
     ENV.apiHost = 'https://json-api.rockandrollwithemberjs.com';
     ENV.rootURL = '/emberSongs/';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
