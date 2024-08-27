@@ -161,4 +161,24 @@ export default class CatalogService extends Service {
       body: JSON.stringify(payload),
     });
   }
+
+  async delete(type, id) {
+    let url =
+      type === 'band' ? `${this.bandsURL}/${id}` : `${this.songsURL}/${id}`;
+    await fetch(url, {
+      method: 'DELETE',
+    });
+    this.removeFromStorage(type, id);
+
+    let response = await this.fetchAll(type);
+    return response;
+  }
+
+  removeFromStorage(type, id) {
+    let collection = type === 'band' ? this.storage.bands : this.storage.songs;
+    let index = collection.findIndex((record) => record.id === id);
+    if (index !== -1) {
+      collection.splice(index, 1);
+    }
+  }
 }
