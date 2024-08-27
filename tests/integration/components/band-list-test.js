@@ -16,8 +16,12 @@ module('Integration | Component | band-list', function (hooks) {
       { id: '2', name: 'Second', isActive: true },
       { id: '3', name: 'Third', isActive: false },
     ]);
+    // eslint-disable-next-line no-unused-vars
+    this.set('deleteBand', (_) => {});
 
-    await render(hbs`<BandList @bands={{this.bands}} />`);
+    await render(
+      hbs`<BandList @bands={{this.bands}}  @deleteBandFunc={{this.deleteBand}}/>`,
+    );
 
     assert
       .dom('[data-test-rr="band-list-item"]')

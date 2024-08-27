@@ -19,11 +19,14 @@ module('Acceptance | bands', function (hooks) {
       .exists({ count: 2 }, 'All band links are rendered');
     assert
       .dom('[data-test-rr="band-list-item"]:first-child')
-      .hasText('Radiohead', 'The first band link contains the band name');
+      .hasText(
+        'Radiohead Remove',
+        'The first band link contains the band name',
+      );
     assert
       .dom('[data-test-rr="band-list-item"]:last-child')
       .hasText(
-        'Long Distance Calling',
+        'Long Distance Calling Remove',
         'The other band link contains the band name',
       );
   });
@@ -41,7 +44,10 @@ module('Acceptance | bands', function (hooks) {
       .exists({ count: 2 }, 'A new band link is rendered');
     assert
       .dom('[data-test-rr="band-list-item"]:last-child')
-      .hasText('Caspian', 'The new band link is rendered as the last item');
+      .hasText(
+        'Caspian Remove',
+        'The new band link is rendered as the last item',
+      );
     assert
       .dom('[data-test-rr="songs-nav-item"] > .active')
       .exists('The Songs tab is active');
