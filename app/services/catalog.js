@@ -80,7 +80,9 @@ export default class CatalogService extends Service {
   loadAll(json) {
     let records = [];
     for (let item of json.data) {
-      records.push(this._loadResource(item));
+      if (item.id) {
+        records.push(this._loadResource(item));
+      }
     }
     return records;
   }
