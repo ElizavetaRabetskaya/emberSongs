@@ -9,7 +9,7 @@
         {{on "click" (set this "sortBy" "title")}}
         @query={{hash s="title"}}
       >
-        Title
+        {{t "title"}}
         <FaIcon class="ml-2" @icon="angle-up" @prefix="fas" />
       </LinkTo>
       <LinkTo
@@ -18,7 +18,7 @@
         {{on "click" (set this "sortBy" "-title")}}
         @query={{hash s="-title"}}
       >
-        Title
+        {{t "title"}}
         <FaIcon class="ml-2" @icon="angle-down" @prefix="fas" />
       </LinkTo>
       <LinkTo
@@ -27,7 +27,7 @@
         {{on "click" (set this "sortBy" "rating")}}
         @query={{hash s="rating"}}
       >
-        Rating
+        {{t "rating"}}
         <FaIcon class="ml-2" @icon="angle-up" @prefix="fas" />
       </LinkTo>
       <LinkTo
@@ -36,7 +36,7 @@
         {{on "click" (set this "sortBy" "-rating")}}
         @query={{hash s="-rating"}}
       >
-        Rating
+        {{t "rating"}}
         <FaIcon class="ml-2" @icon="angle-down" @prefix="fas" />
       </LinkTo>
     </span>
@@ -74,7 +74,7 @@
   </ul>
 {{else}}
   <p class="text-center" data-test-rr="no-songs-text">
-    The band has no songs yet.
+    {{t "notSongs"}}
   </p>
 {{/if}}
 
@@ -85,7 +85,7 @@
       class="px-4 py-2 rounded bg-purple-600 shadow-md hover:shadow-lg hover:text-white hover:bg-purple-500 focus:outline-none"
       {{on "click" (set this "showAddSong" false)}}
     >
-      Add song
+      {{t "addSong"}}
     </button>
   </div>
 {{else}}
@@ -108,14 +108,14 @@
       disabled={{this.hasNoTitle}}
       {{on "click" this.saveSong}}
     >
-      Save
+      {{t "saveBtn"}}
     </button>
     <button
       type="button"
       class="ml-2 px-4 p-2 rounded bg-white border border-bg-purple-600 shadow-md text-purple-600 hover:shadow-lg"
       {{on "click" this.cancel}}
     >
-      Cancel
+      {{t "cancelBtn"}}
     </button>
   </div>
 {{/if}}

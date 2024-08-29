@@ -54,6 +54,7 @@
     "ember-cli-postcss": "^8.2.0",
     "ember-cli-surge": "^1.4.4",
     "ember-fetch": "^8.1.2",
+    "ember-intl": "^7.0.5",
     "ember-load-initializers": "^2.1.2",
     "ember-modifier": "^4.2.0",
     "ember-page-title": "^8.2.3",
@@ -88,7 +89,9 @@
     "edition": "octane"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@glimmer/runtime": "^0.92.0",
+    "ember-toggle": "^9.0.3",
     "rsvp": "^4.8.5"
   }
 }
