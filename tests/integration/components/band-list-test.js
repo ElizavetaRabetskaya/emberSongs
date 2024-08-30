@@ -2,12 +2,16 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | band-list', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'en-us', {
+    removeBtn: 'Remove',
+  });
   hooks.beforeEach(function () {
     let routerService = this.owner.lookup('service:router');
-    routerService.isActive = (routeName, band) => band.id === '2'; // Возвращает true для id '2'
+    routerService.isActive = (routeName, band) => band.id === '2';
   });
 
   test('it renders all bands passed to it and correctly applies classes based on isActive', async function (assert) {
